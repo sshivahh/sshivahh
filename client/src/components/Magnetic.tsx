@@ -23,18 +23,9 @@ export default function Magnetic({ children, ...props }: MagneticProps) {
     });
 
     const handleMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e;
       const rect = element.getBoundingClientRect();
-      
-      // Calculate center of the element
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      
-      // Calculate distance from mouse to center
-      const x = clientX - centerX;
-      const y = clientY - centerY;
-      
-      // Apply magnetic effect
+      const x = e.clientX - (rect.left + rect.width / 2);
+      const y = e.clientY - (rect.top + rect.height / 2);
       xTo(x * 0.35);
       yTo(y * 0.35);
     };
@@ -44,20 +35,18 @@ export default function Magnetic({ children, ...props }: MagneticProps) {
       yTo(0);
     };
 
-    element.addEventListener("mouseenter", handleMouseMove);
     element.addEventListener("mousemove", handleMouseMove);
     element.addEventListener("mouseleave", handleMouseLeave);
 
-    // Cleanup
     return () => {
-      element.removeEventListener("mouseenter", handleMouseMove);
       element.removeEventListener("mousemove", handleMouseMove);
       element.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 
-  return React.cloneElement(children as React.ReactElement<any>, {
-    ref: magnetic,
-    ...props,
-  });
+  return (
+    <div ref={magnetic} {...props}>
+      {children}
+    </div>
+  );
 }
