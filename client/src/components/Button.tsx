@@ -6,7 +6,6 @@ import React, {
     HTMLAttributes,
   } from "react";
   import gsap from "gsap";
-  import Magnetic from "./Magnetic";
   
   interface ButtonProps extends HTMLAttributes<HTMLDivElement> {
     children: ReactNode;
@@ -58,7 +57,6 @@ import React, {
       };
   
       return (
-        <Magnetic>
 
         <div
           {...attributes}
@@ -79,7 +77,6 @@ import React, {
             className="w-full h-[150%] absolute rounded-full top-full bg-indigo-600"
           ></div>
         </div>
-        </Magnetic>
       );
     }
   );

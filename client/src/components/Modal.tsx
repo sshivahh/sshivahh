@@ -148,7 +148,7 @@ export default function Modal({ modal, projects }: ModalProps) {
     }}
   >
     {projects.map((project, i) => {
-      const { title, color } = project;
+      const { color } = project;
       return (
         <div
           key={`cursor_${i}`}

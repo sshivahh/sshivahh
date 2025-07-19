@@ -1,10 +1,10 @@
 "use client";
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import { motion, useInView } from "framer-motion";
 import { slideUp, container as containerVariant } from "../animation/animDesc";
 import Button from "@/components/Button";
+import Magnetic from "@/components/Magnetic";
 
 export default function DescriptionSection() {
   const container = useRef<HTMLDivElement>(null);
@@ -59,17 +59,16 @@ export default function DescriptionSection() {
           user-centric design, ensuring that every interaction is smooth and
           intuitive.
         </motion.p>
-    
-        
       </div>
-      <Button
-  ref={floatingCircle}
-  className="w-48 h-48 absolute -bottom-32 left-2/3 flex justify-center items-center rounded-full z-30"
-  backgroundColor="rgb(82, 82, 82)" // tailwind's bg-neutral-600
->
-  About Me
-</Button>
-
+      <Magnetic>
+        <Button
+          ref={floatingCircle}
+          className="w-48 h-48 absolute -bottom-32 left-2/3 flex justify-center items-center rounded-full z-30"
+          backgroundColor="rgb(82, 82, 82)" // tailwind's bg-neutral-600
+        >
+          About Me
+        </Button>
+      </Magnetic>
     </section>
   );
 }

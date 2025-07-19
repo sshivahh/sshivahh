@@ -15,7 +15,6 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const isTouch = typeof window !== "undefined" && "ontouchstart" in window;
 
     const lenis = new Lenis({
       duration: 1.2,
@@ -59,7 +58,7 @@ export default function Page() {
 
   return (
     <main data-lenis-root>
-      {/* <AnimatePresence mode="wait">{isLoading && <Preloader />}</AnimatePresence> */}
+      <AnimatePresence mode="wait">{isLoading && <Preloader />}</AnimatePresence>
       <Header />
       <HeroSection />
       <DescriptionSection />

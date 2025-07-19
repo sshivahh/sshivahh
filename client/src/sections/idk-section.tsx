@@ -1,10 +1,9 @@
-import { useRef, useLayoutEffect } from "react";
+import { useRef} from "react";
 import { motion, useTransform, useScroll } from "framer-motion";
 
 export default function IdkSection() {
 
     const container = useRef<HTMLDivElement>(null);
-    const curve = useRef<HTMLDivElement>(null);
 
     const { scrollYProgress } = useScroll({
         target: container,

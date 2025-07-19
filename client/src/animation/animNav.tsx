@@ -1,4 +1,4 @@
-import { delay, Easing } from "framer-motion";
+import { Easing } from "framer-motion";
 
 export const menuSlide = {
   initial: {

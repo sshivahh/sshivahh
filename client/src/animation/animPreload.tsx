@@ -1,5 +1,4 @@
-import { delay, Easing } from "framer-motion";
-import { del } from "framer-motion/client";
+import { Easing } from "framer-motion";
 
 export const slideUp = {
   initial: {

@@ -1,8 +1,16 @@
-import React, { HTMLAttributes, ReactNode, useEffect, useRef } from "react";
+import React, {
+  HTMLAttributes,
+  ReactElement,
+  useEffect,
+  useRef,
+  cloneElement,
+} from "react";
 import gsap from "gsap";
 
 interface MagneticProps extends HTMLAttributes<HTMLDivElement> {
-  children: ReactNode;
+  children: ReactElement<
+    React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+  >;
 }
 
 export default function Magnetic({ children, ...props }: MagneticProps) {
@@ -16,16 +24,22 @@ export default function Magnetic({ children, ...props }: MagneticProps) {
       duration: 1,
       ease: "elastic.out(1, 0.3)",
     });
-    
+
     const yTo = gsap.quickTo(element, "y", {
       duration: 1,
       ease: "elastic.out(1, 0.3)",
     });
 
     const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
       const rect = element.getBoundingClientRect();
-      const x = e.clientX - (rect.left + rect.width / 2);
-      const y = e.clientY - (rect.top + rect.height / 2);
+
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      const x = clientX - centerX;
+      const y = clientY - centerY;
+
       xTo(x * 0.35);
       yTo(y * 0.35);
     };
@@ -35,18 +49,19 @@ export default function Magnetic({ children, ...props }: MagneticProps) {
       yTo(0);
     };
 
+    element.addEventListener("mouseenter", handleMouseMove);
     element.addEventListener("mousemove", handleMouseMove);
     element.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
+      element.removeEventListener("mouseenter", handleMouseMove);
       element.removeEventListener("mousemove", handleMouseMove);
       element.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 
-  return (
-    <div ref={magnetic} {...props}>
-      {children}
-    </div>
-  );
+  return cloneElement(children, {
+    ...props,
+    ref: magnetic,
+  });
 }

@@ -3,8 +3,6 @@
 import { useState } from "react";
 import Project from "@/components/Project";
 import Modal from "@/components/Modal";
-import View from "@/components/View";
-import { color } from "framer-motion";
 
 export default function ProjectsSection() {
   const projects = [

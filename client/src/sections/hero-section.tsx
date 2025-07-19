@@ -1,7 +1,7 @@
 import Image from "next/image";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { useEffect, useRef, useLayoutEffect } from "react";
+import { useRef, useLayoutEffect } from "react";
 
 export default function HeroSection() {
   const container = useRef<HTMLDivElement>(null);
