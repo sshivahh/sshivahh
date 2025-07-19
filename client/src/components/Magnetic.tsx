@@ -4,8 +4,21 @@ import React, {
   useEffect,
   useRef,
   cloneElement,
+  forwardRef,
 } from "react";
 import gsap from "gsap";
+
+function mergeRefs<T>(...refs: (React.Ref<T> | undefined)[]): React.RefCallback<T> {
+  return (value) => {
+    refs.forEach((ref) => {
+      if (typeof ref === "function") {
+        ref(value);
+      } else if (ref && typeof ref === "object") {
+        (ref as React.MutableRefObject<T | null>).current = value;
+      }
+    });
+  };
+}
 
 interface MagneticProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactElement<
@@ -13,7 +26,7 @@ interface MagneticProps extends HTMLAttributes<HTMLDivElement> {
   >;
 }
 
-export default function Magnetic({ children, ...props }: MagneticProps) {
+const Magnetic = forwardRef<HTMLDivElement, MagneticProps>(({ children, ...props }, externalRef) => {
   const magnetic = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -33,13 +46,8 @@ export default function Magnetic({ children, ...props }: MagneticProps) {
     const handleMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
       const rect = element.getBoundingClientRect();
-
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-
-      const x = clientX - centerX;
-      const y = clientY - centerY;
-
+      const x = clientX - (rect.left + rect.width / 2);
+      const y = clientY - (rect.top + rect.height / 2);
       xTo(x * 0.35);
       yTo(y * 0.35);
     };
@@ -62,6 +70,10 @@ export default function Magnetic({ children, ...props }: MagneticProps) {
 
   return cloneElement(children, {
     ...props,
-    ref: magnetic,
+    ref: mergeRefs(magnetic, externalRef),
   });
-}
+});
+
+export default Magnetic;
+
+Magnetic.displayName = "Magnetic";

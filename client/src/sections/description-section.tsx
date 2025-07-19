@@ -60,15 +60,17 @@ export default function DescriptionSection() {
           intuitive.
         </motion.p>
       </div>
-      <Magnetic>
-        <Button
-          ref={floatingCircle}
-          className="w-48 h-48 absolute -bottom-32 left-2/3 flex justify-center items-center rounded-full z-30"
-          backgroundColor="rgb(82, 82, 82)" // tailwind's bg-neutral-600
-        >
-          About Me
-        </Button>
-      </Magnetic>
+      
+      <div ref={floatingCircle}> {/* Parallax wrapper */}
+  <Magnetic>
+    <Button
+      className="w-48 h-48 absolute -bottom-32 left-2/3 flex justify-center items-center rounded-full z-30"
+      backgroundColor="rgb(82, 82, 82)"
+    >
+      About Me
+    </Button>
+  </Magnetic>
+</div>
     </section>
   );
 }

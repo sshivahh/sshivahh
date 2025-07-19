@@ -57,7 +57,7 @@ export default function Page() {
   
 
   return (
-    <main data-lenis-root>
+    <main className="overflow-hidden">
       <AnimatePresence mode="wait">{isLoading && <Preloader />}</AnimatePresence>
       <Header />
       <HeroSection />

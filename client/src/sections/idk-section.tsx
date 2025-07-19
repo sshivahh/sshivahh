@@ -15,7 +15,7 @@ export default function IdkSection() {
     return (<>
             <section
         ref={container}
-            className="px-64 py-52 relative">
+            className="px-64 py-52 relative overflow-hidden">
         <div className="flex justify-between items-start gap-48">
             <p className="w-1/2 text-5xl font-light flex flex-wrap">
             This section is intentionally left blank. Sometimes, less is more.
