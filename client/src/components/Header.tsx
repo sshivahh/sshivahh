@@ -4,6 +4,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Navbar from "./Navbar";
 import Magnetic from "./Magnetic";
+import { motion } from "framer-motion";
 
 export default function Header() {
   const [isActive, setActive] = useState(false);
@@ -46,6 +47,7 @@ export default function Header() {
     }
   }, [isActive]);
 
+  
   return (
     <>
       <header className="">
@@ -100,10 +102,13 @@ export default function Header() {
         <AnimatePresence mode="wait">
           {isActive && (
             <>
-              <div
-                className="inset-0 z-[60] fixed "
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="inset-0 z-[60] fixed bg-black/40"
                 onClick={() => setActive(false)}
-              ></div>
+              ></motion.div>
               <Navbar />
             </>
           )}

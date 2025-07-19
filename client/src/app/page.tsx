@@ -38,7 +38,7 @@ export default function Page() {
     setTimeout(() => {
       setIsLoading(false);
       window.scrollTo(0, 0);
-    }, 3000);
+    }, 3500);
 
     return () => {
       lenis.destroy();

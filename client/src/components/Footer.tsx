@@ -1,9 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useLayoutEffect } from "react";
+import { useRef, useLayoutEffect, useEffect, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Button from "./Button";
+import Magnetic from "./Magnetic";
 
 export default function Footer() {
   const container = useRef<HTMLDivElement>(null);
@@ -18,8 +20,7 @@ export default function Footer() {
       if (container.current && ball.current) {
         gsap.fromTo(
           ball.current,
-          { x: "-30vw", 
-            scale: 0.4 }, // 👈 initial state
+          { x: "-30vw", scale: 0.4 }, // 👈 initial state
           {
             x: "0vw",
             scale: 1,
@@ -66,11 +67,29 @@ export default function Footer() {
             },
           }
         );
-
       }
     }, container);
 
     return () => ctx.revert();
+  }, []);
+
+  const [localTime, setLocalTime] = useState("");
+
+  useEffect(() => {
+    const updateTime = () => {
+      const jakartaTime = new Date().toLocaleTimeString("en-US", {
+        timeZone: "Asia/Jakarta",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      });
+      setLocalTime(jakartaTime);
+    };
+
+    updateTime(); // initialize immediately
+    const interval = setInterval(updateTime, 1000); // update every second
+
+    return () => clearInterval(interval); // cleanup
   }, []);
 
   return (
@@ -94,20 +113,27 @@ export default function Footer() {
           <p className="text-[8rem] w-3/4 leading-none z-30">Together</p>
         </div>
         <span className="w-full h-1 border-t-[1px] border-white my-24 relative">
-          <div
-            ref={ball}
-            className="w-60 h-60 absolute -bottom-30 right-30 bg-indigo-500 rounded-full flex items-center justify-center"
-          >
-            <p className="text-white text-2xl font-extralight">Get in Touch</p>
+          <div ref={ball}>
+            <Magnetic>
+              <div className="w-60 h-60 absolute -bottom-30 right-30 bg-indigo-500 rounded-full flex items-center justify-center">
+                <p className="text-white text-2xl font-extralight">
+                  Get in Touch
+                </p>
+              </div>
+            </Magnetic>
           </div>
         </span>
         <div className="flex gap-8">
-          <button className="px-8 py-6 border-white border-2 rounded-full">
-            dev.russelshivah@gmail.com
-          </button>
-          <button className="px-8 py-6 border-white border-2 rounded-full">
-            +91 9876543210
-          </button>
+          <Magnetic>
+            <Button className="px-8 py-6 border-white border-2 rounded-full">
+              dev.russelshivah@gmail.com
+            </Button>
+          </Magnetic>
+          <Magnetic>
+            <Button className="px-8 py-6 border-white border-2 rounded-full">
+              +6281211001605
+            </Button>
+          </Magnetic>
         </div>
       </div>
       <div className="px-32 pb-10 w-full absolute bottom-0 flex items-center justify-between">
@@ -122,7 +148,7 @@ export default function Footer() {
             <h1 className="text-neutral-300 text-sm font-extralight">
               LOCAL TIME
             </h1>
-            <p className="font-medium">12:40</p>
+            <p className="font-medium">{localTime}</p>
           </div>
         </div>
         <div className="flex flex-col gap-4">

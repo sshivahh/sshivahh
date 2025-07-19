@@ -23,9 +23,9 @@ import React, {
         timeline.current.to(
           circle.current,
           {
-            top: "-25%",
+            top: "-75%",
             width: "125%",
-            duration: 0.4,
+            duration: 0.6,
             ease: "power2.inOut",
           },
           "enter"
@@ -33,8 +33,8 @@ import React, {
         timeline.current.to(
           circle.current,
           {
-            top: "-150%",
-            width: "150%",
+            top: "-250%",
+            width: "100%",
             duration: 0.4,
             ease: "power2.inOut",
           },
@@ -74,7 +74,7 @@ import React, {
             </p>
           <div
             ref={circle}
-            className="w-full h-[150%] absolute rounded-full top-full bg-indigo-600"
+            className="w-full h-[250%] absolute rounded-full top-full bg-indigo-600"
           ></div>
         </div>
       );

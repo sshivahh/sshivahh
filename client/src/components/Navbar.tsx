@@ -10,7 +10,7 @@ export default function Navbar() {
     { name: "Contact", link: "#contact" },
   ];
 
-  return (
+  return (<>
     <motion.nav
       variants={menuSlide}
       initial="initial"
@@ -65,6 +65,6 @@ export default function Navbar() {
         </div>
         <Curve />
       </div>
-    </motion.nav>
+    </motion.nav> </>
   );
 }
