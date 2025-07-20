@@ -1,7 +1,6 @@
 "use client";
 import { Easing, motion } from "framer-motion";
 import {
-  opacity,
   slideUp,
   opacityDelay,
   loadingProgress,
