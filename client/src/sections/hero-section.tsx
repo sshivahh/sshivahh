@@ -2,6 +2,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useRef, useLayoutEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function HeroSection() {
   const container = useRef<HTMLDivElement>(null);
@@ -70,6 +71,16 @@ export default function HeroSection() {
         <Image fill={true} src="/images/h3.png" alt="Hero Image" />
       </div>
       <div className="bg-gradient-to-t from-black/60 via-transparent to-black/60 absolute inset-0"></div>
+      <motion.div
+        initial={{x: "-100%" }}
+        animate={{x: 0 }}
+        transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1], delay:4 }}
+        className="bg-black/50 z-50 absolute bottom-1/2 left-0 rounded-br-full rounded-tr-full pl-20 py-5 w-[500px]"
+      >
+        <p className="text-white text-5xl font-extralight w-full">
+          Full Stack Web Developer
+        </p>
+      </motion.div>
       <div className="absolute bottom-[3vh]">
         <div
           ref={slider}

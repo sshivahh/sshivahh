@@ -44,8 +44,8 @@ export default function ProjectsSection() {
 
   return (
     <section className="w-full h-screen flex flex-col items-center justify-center relative">
-      <p className="text-sm font-extralight text-neutral-500">RECENT WORKS</p>
       <div className="w-[75vw] h-[80%] py-auto flex flex-col items-center justify-center">
+      <p className="text-md font-extralight text-neutral-500 mb-2 w-full">RECENT WORKS</p>
         {projects.map((project, index) => {
           return (
             <Project

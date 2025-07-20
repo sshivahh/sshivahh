@@ -9,7 +9,11 @@ import Magnetic from "@/components/Magnetic";
 export default function DescriptionSection() {
   const container = useRef<HTMLDivElement>(null);
   const floatingCircle = useRef<HTMLDivElement>(null);
-  const isInView = useInView(container, { once: true });
+  const isInView = useInView(container, {
+    once: true,
+    amount: 0.4, // Only trigger when 40% of the section is in view
+  });
+  
 
   useLayoutEffect(() => {
     if (!container.current || !floatingCircle.current) return;
@@ -34,9 +38,9 @@ export default function DescriptionSection() {
     "A passionate developer with a keen eye for detail, dedicated to crafting exceptional user experiences through innovative web solutions.";
 
   return (
-    <section className="px-64 py-52 relative" ref={container}>
+    <section className="px-64 pt-52 relative" ref={container}>
       <div className="flex justify-between items-start gap-48">
-        <motion.p
+        <motion.div
           className="w-1/2 text-5xl font-light flex flex-wrap"
           variants={containerVariant}
           initial="closed"
@@ -47,7 +51,7 @@ export default function DescriptionSection() {
               {word}
             </motion.span>
           ))}
-        </motion.p>
+        </motion.div>
 
         <motion.p
           className="h-full text-lg w-1/5 font-extralight text-end"
@@ -60,17 +64,19 @@ export default function DescriptionSection() {
           intuitive.
         </motion.p>
       </div>
-      
-      <div ref={floatingCircle}> {/* Parallax wrapper */}
-  <Magnetic>
-    <Button
-      className="w-48 h-48 absolute -bottom-32 left-2/3 flex justify-center items-center rounded-full z-30"
-      backgroundColor="rgb(82, 82, 82)"
-    >
-      About Me
-    </Button>
-  </Magnetic>
-</div>
+
+      <div ref={floatingCircle}>
+        {" "}
+        {/* Parallax wrapper */}
+        <Magnetic>
+          <Button
+            className="w-48 h-48 absolute -bottom-32 left-2/3 flex justify-center items-center rounded-full z-30"
+            backgroundColor="rgb(82, 82, 82)"
+          >
+            About Me
+          </Button>
+        </Magnetic>
+      </div>
     </section>
   );
 }
