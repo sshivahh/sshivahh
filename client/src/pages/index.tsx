@@ -3,15 +3,12 @@ import { useEffect, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 
 import Preloader from "@/components/Preloader";
-import Header from "@/components/layouts/Header";
 import HeroSection from "@/sections/hero-section";
 import DescriptionSection from "@/sections/description-section";
 import ProjectSection from "@/sections/projects-section";
 import IdkSection from "@/sections/idk-section";
-import Footer from "@/components/layouts/Footer";
 import { AnimatePresence } from "framer-motion";
 import Head from "next/head";
-import Transition from "@/components/layouts/Transition";
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
