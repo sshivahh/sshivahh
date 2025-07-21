@@ -5,6 +5,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import Navbar from "./Navbar";
 import Magnetic from "../Magnetic";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Header() {
   const [isActive, setActive] = useState(false);
@@ -54,8 +55,9 @@ export default function Header() {
         <motion.div 
           initial={{ y: -100 }}
           animate={{ y: 0 }}
-          transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] , delay: 3.5 }}
-        className="h-24 w-full absolute z-40 flex justify-between items-center px-32 text-white">
+          // transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] , delay: 3.5 }}
+          transition={{ duration: 0.1, ease: [0.76, 0, 0.24, 1] , delay: 0.5 }}
+        className="h-24 w-full absolute z-30 flex justify-between items-center px-32 text-white">
           <Magnetic>
             <button className="overflow-hidden h-12 group">
               <div className="h-fit flex flex-col group-hover:translate-y-[-50%] transition-all duration-300"
@@ -71,19 +73,19 @@ export default function Header() {
           </Magnetic>
           <div className="flex gap-12 text-xl font-extralight">
             <Magnetic>
-              <a className="cursor-pointer px-5 py-2">.home</a>
+              <Link href={"/"} className="cursor-pointer px-5 py-2">.home</Link>
             </Magnetic>
             <Magnetic>
-              <a className="cursor-pointer px-5 py-2">.about</a>
+              <Link href={"/about"} className="cursor-pointer px-5 py-2">.about</Link>
             </Magnetic>
             <Magnetic>
-              <a className="cursor-pointer px-5 py-2">.projects</a>
+              <Link href={"/projects"} className="cursor-pointer px-5 py-2">.projects</Link>
             </Magnetic>
             <Magnetic>
-              <a className="cursor-pointer px-5 py-2">.idk</a>
+              <Link href={"/idk"} className="cursor-pointer px-5 py-2">.idk</Link>
             </Magnetic>
             <Magnetic>
-              <a className="cursor-pointer px-5 py-2">.contact</a>
+              <Link href={"/contact"} className="cursor-pointer px-5 py-2">.contact</Link>
             </Magnetic>
           </div>
         </motion.div>

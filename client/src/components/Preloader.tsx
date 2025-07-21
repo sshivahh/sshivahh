@@ -48,9 +48,9 @@ export default function Preloader() {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="fixed inset-0 bg-neutral-900 z-[3000] flex justify-center items-center"
+      className="fixed inset-0 bg-neutral-900 z-[999] flex justify-center items-center"
     >
-      <div className="absolute w-1/5 h-full left-1/2 translate-x-[-50%] z-50">
+      <div className="absolute w-1/5 h-full left-1/2 translate-x-[-50%] z-[999]">
         <motion.div
           variants={loadingProgress}
           initial="initial"
