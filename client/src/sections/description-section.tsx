@@ -20,7 +20,7 @@ export default function DescriptionSection() {
 
     const ctx = gsap.context(() => {
       gsap.to(floatingCircle.current, {
-        y: "-100%",
+        y: "-150%",
         ease: "power2.inOut",
         scrollTrigger: {
           trigger: container.current,

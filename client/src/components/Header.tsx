@@ -51,7 +51,11 @@ export default function Header() {
   return (
     <>
       <header className="">
-        <div className="h-24 w-full absolute z-40 flex justify-between items-center px-32 text-white">
+        <motion.div 
+          initial={{ y: -100 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] , delay: 3.5 }}
+        className="h-24 w-full absolute z-40 flex justify-between items-center px-32 text-white">
           <Magnetic>
             <button className="overflow-hidden h-12 group">
               <div className="h-fit flex flex-col group-hover:translate-y-[-50%] transition-all duration-300"
@@ -82,10 +86,10 @@ export default function Header() {
               <a className="cursor-pointer px-5 py-2">.contact</a>
             </Magnetic>
           </div>
-        </div>
+        </motion.div>
         <div
           ref={burger}
-          className="fixed top-10 right-10 w-28 h-28 bg-neutral-700 rounded-full z-[70] flex justify-center items-center hover:cursor-pointer active:bg-neutral-800 active:!scale-90 transition-all duration-300 scale-0"
+          className="fixed top-10 right-10 w-28 h-28 bg-neutral-700 rounded-full z-[70] flex justify-center items-center hover:cursor-pointer active:bg-neutral-800 hover:bg-neutral-600 active:!scale-90 transition-all duration-300 scale-0"
           onClick={() => handleBurgerClick()}
         >
           <div

@@ -2,9 +2,9 @@ import Image from "next/image";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useRef, useLayoutEffect, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 
-const textOne = "WEB DEVELOPER";
+const textOne = "Web Developer";
 
 export default function HeroSection() {
   const container = useRef<HTMLDivElement>(null);
@@ -17,7 +17,7 @@ export default function HeroSection() {
   const timelines = useRef<(gsap.core.Timeline | null)[]>([]);
 
   let xPercent = 0;
-  let direction = 1;
+  let direction = 0.7;
   let animationFrameId: number;
 
   useLayoutEffect(() => {
@@ -42,7 +42,7 @@ export default function HeroSection() {
       end: window.innerHeight,
       scrub: 0.25,
       onUpdate: (self) => {
-        direction = self.direction * -1;
+        direction = self.direction * -0.7;
       },
     });
 
@@ -91,27 +91,53 @@ export default function HeroSection() {
     });
   }, []);
 
+  const controls = useAnimation();
+
+  useEffect(() => {
+    controls.start({
+      y: "-35%",
+      transition: {
+        duration: 1,
+        ease: [0.65, 0, 0.35, 1],
+        delay: 3.5,
+      },
+    });
+  }, []);
+
   return (
     <section
       className={`relative w-screen h-screen overflow-hidden`}
       ref={container}
     >
-      <div ref={imageWrapper} className="w-full h-full">
-        <Image fill={true} src="/images/h3.png" alt="Hero Image" />
-      </div>
+<div ref={imageWrapper} className="w-full h-full relative overflow-hidden">
+  <motion.div
+    initial={{ y: "10%" }}
+    animate={controls}
+    className="absolute inset-0 w-full overflow-visible"
+    style={{ height: "200%" }} // <-- allow extra height for sliding
+  >
+    <Image
+      src="/images/full.jpg"
+      alt="Hero Image"
+      fill
+      className="object-cover"
+    />
+  </motion.div>
+</div>
+
       <div className="bg-gradient-to-t from-black/60 via-transparent to-black/60 absolute inset-0"></div>
       <div className="absolute bottom-[3vh]">
         <motion.div
-          initial={{ x: "-100%" }}
-          animate={{ x: 0 }}
-          transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1], delay: 4 }}
-          className={` z-50 absolute top-0 left-0 rounded-br-full rounded-tr-full pl-20 py-2 pr-8  tracking-tighter text-white font-light bg-neutrl-800/80`}
+          initial={{ y: "150%" }}
+          animate={{ y: 0 }}
+          transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1], delay: 3.5 }}
+          className={` z-50 absolute -top-72 right-50 rounded-br-full rounded-tr-full pr-20 py-2 tracking-tighter text-white font-light bg-neutrl-800/80`}
         >
-          <div className="text-white/70 text-6xl w-full font-medium border-2 px-5 py-1 rounded-full flex overflow-hidden">
+          <div className="text-white/90 text-6xl w-full font-light border2 px-5 py-1 rounded-full flex overflow-hidden text-shadow-amber-800 text-shadow-2xl">
             {textOne.split("").map((char, index) => (
               <div
                 key={index}
-                className="relative inline-block overflow-hidden h-[1em]"
+                className="relative inline-block overflow-hidden h-[1em] cursor-default"
                 onMouseEnter={() => {
                   const el = letterRefs.current[index];
                   if (!el) return;
@@ -148,17 +174,23 @@ export default function HeroSection() {
             ))}
           </div>
         </motion.div>
-        <div
-          ref={slider}
-          className="text-[240px] text-white font-light tracking-tight flex"
+        <motion.div
+          initial={{ y: "100%" }}
+          animate={{ y: 0 }}
+          transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1], delay: 3.5 }}
         >
-          <p ref={firstText} className="text-nowrap">
-            Russel Shivah Budiarto -&nbsp;
-          </p>
-          <p ref={secondText} className="absolute left-[100%] text-nowrap">
-            Russel Shivah Budiarto -&nbsp;
-          </p>
-        </div>
+          <div
+            ref={slider}
+            className="text-[240px] text-white font-light tracking-tight flex"
+          >
+            <p ref={firstText} className="text-nowrap">
+              Russel Shivah Budiarto -&nbsp;
+            </p>
+            <p ref={secondText} className="absolute left-[100%] text-nowrap">
+              Russel Shivah Budiarto -&nbsp;
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
