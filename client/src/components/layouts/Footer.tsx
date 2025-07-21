@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useRef, useLayoutEffect, useEffect, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import Button from "./Button";
-import Magnetic from "./Magnetic";
+import Button from "../Button";
+import Magnetic from "../Magnetic";
 
 export default function Footer() {
   const container = useRef<HTMLDivElement>(null);

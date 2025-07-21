@@ -1,7 +1,7 @@
 "use client";
 import { Easing, motion } from "framer-motion";
 import {
-  slideUp,
+  slideLeft,
   opacityDelay,
   loadingProgress,
   wordContainer,
@@ -22,15 +22,11 @@ export default function Preloader() {
     });
   }, []);
 
-  const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
-    dimension.height
-  } Q${dimension.width / 2} ${dimension.height + 300} 0 ${
-    dimension.height
-  } L0 0`;
+  const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width + 300} ${dimension.height / 2} ${dimension.width} 0 L0 0`;
+  const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width} ${dimension.height / 2} ${dimension.width} 0 L0 0`;
 
-  const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
-    dimension.height
-  } Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height} L0 0`;
+  // const targetPath = `M0 0 L0 0 L0 ${dimension.height} Q0 ${dimension.height / 2} 0 0 L0 0`;
+  
 
   const curve = {
     initial: {
@@ -39,7 +35,7 @@ export default function Preloader() {
     exit: {
       d: targetPath,
       transition: {
-        duration: 0.8,
+        duration: 1,
         ease: [0.76, 0, 0.24, 1] as Easing,
         delay: 0.2,
       },
@@ -48,7 +44,7 @@ export default function Preloader() {
 
   return (
     <motion.div
-      variants={slideUp}
+      variants={slideLeft}
       initial="initial"
       animate="animate"
       exit="exit"
@@ -95,7 +91,7 @@ export default function Preloader() {
             </motion.p>
           </div>
 
-          <svg className="absolute top-0 left-0 w-full h-[120%]">
+          <svg className="absolute top-0 left-0 w-[120%] h-full">
             <motion.path
               variants={curve}
               initial="initial"

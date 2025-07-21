@@ -97,7 +97,7 @@ export default function HeroSection() {
     controls.start({
       y: "-35%",
       transition: {
-        duration: 1,
+        duration: 2,
         ease: [0.65, 0, 0.35, 1],
         delay: 3.5,
       },
@@ -111,7 +111,7 @@ export default function HeroSection() {
     >
 <div ref={imageWrapper} className="w-full h-full relative overflow-hidden">
   <motion.div
-    initial={{ y: "10%" }}
+    initial={{ y: "0%" }}
     animate={controls}
     className="absolute inset-0 w-full overflow-visible"
     style={{ height: "200%" }} // <-- allow extra height for sliding

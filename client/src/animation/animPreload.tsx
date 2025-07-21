@@ -1,18 +1,18 @@
 import { Easing } from "framer-motion";
 
-export const slideUp = {
+export const slideLeft = {
   initial: {
-    y: 0,
+    x: 0,
   },
   exit: {
-    y: "-100vh",
+    x: "-100%",
     transition: {
-      duration: 0.8,
+      duration: 1.2,
       ease: [0.76, 0, 0.24, 1] as Easing,
-      delay: 0.2,
     },
   },
 };
+
 
 export const opacity = {
   hidden: {

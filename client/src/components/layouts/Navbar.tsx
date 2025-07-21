@@ -1,6 +1,6 @@
 import { menuSlide, slide } from "@/animation/animNav";
 import { motion } from "framer-motion";
-import Curve from "./Curve";
+import Curve from "../Curve";
 
 export default function Navbar() {
   const menu = [
