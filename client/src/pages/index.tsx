@@ -9,6 +9,7 @@ import ProjectSection from "@/sections/projects-section";
 import IdkSection from "@/sections/idk-section";
 import { AnimatePresence } from "framer-motion";
 import Head from "next/head";
+import Footer from "@/components/layouts/Footer";
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
@@ -65,7 +66,7 @@ export default function Page() {
       </Head>
       {/* <Transition> */}
 
-      <main className="">
+      <main className="overflow-x-hidden overflow-y-visible">
         <AnimatePresence mode="wait">
           {isLoading && <Preloader />}
         </AnimatePresence>
@@ -73,6 +74,7 @@ export default function Page() {
         <DescriptionSection />
         <ProjectSection />
         <IdkSection />
+        <Footer />
       </main>
       {/* </Transition> */}
     </>

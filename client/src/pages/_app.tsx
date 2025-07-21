@@ -25,7 +25,7 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
       <Component {...pageProps} />
     </Transition>
   </AnimatePresence>
-  <Footer />
+  {/* <Footer /> */}
 </main>
   );
 }

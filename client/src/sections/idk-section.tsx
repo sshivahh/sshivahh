@@ -33,7 +33,7 @@ export default function IdkSection() {
         <motion.div className="relative mt-[100px] h-[50px] z-30"
         style={{ height: height }}
         >
-        <div className="absolute h-[1550%] w-[120%] left-[-10%] bg-white rounded-bl-[50%] rounded-br-[50%] shadow-[0_60px_50px_rgba(0,0,0,0.748)]">
+        <div className="absolute h-[1550%] w-[120%] left-[-10%] bg-white rounded-bl-[50%] z-[80000] rounded-br-[50%] shadow-[0_60px_50px_rgba(0,0,0,0.748)]">
 
 
             </div>
