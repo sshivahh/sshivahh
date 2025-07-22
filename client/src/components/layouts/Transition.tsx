@@ -12,8 +12,10 @@ const anim = <T extends object>(variants: T) => ({
 
 export default function Transition({
   children,
+  isFirstVisit = false,
 }: {
   children: React.ReactNode;
+  isFirstVisit?: boolean;
 }) {
   const router = useRouter();
   const [dimensions, setDimensions] = useState({ height: 0, width: 0 });
@@ -70,7 +72,7 @@ export default function Transition({
   return (
     <>
       {/* Animated overlay */}
-      <div className="fixed top-0 left-0 w-screen h-screen z-[9999] pointer-events-none">
+      <div className={`fixed top-0 left-0 w-screen h-screen z-[9999] pointer-events-none ${isFirstVisit? "hidden" : "block"}`}>
         <motion.p
           {...anim(text)}
           className="left-1/2 translate-x-[-50%] text-8xl text-white absolute top-1/2 -translate-y-1/2 z-[200] font-extralight"

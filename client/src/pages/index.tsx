@@ -10,9 +10,11 @@ import IdkSection from "@/sections/idk-section";
 import { AnimatePresence } from "framer-motion";
 import Head from "next/head";
 import Footer from "@/components/layouts/Footer";
+import { useVisit } from "@/context/VisitContext";
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
+  const { isFirstVisit: isFirstVisitContext } = useVisit();
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -34,6 +36,12 @@ export default function Page() {
     requestAnimationFrame(raf);
 
     // ✅ Call it properly
+    if(isFirstVisitContext){
+      setIsLoading(true)
+    } else{
+      setIsLoading(false);
+    }
+
     setTimeout(() => {
       setIsLoading(false);
       window.scrollTo(0, 0);
@@ -68,7 +76,7 @@ export default function Page() {
 
       <main className="overflow-x-hidden overflow-y-visible">
         <AnimatePresence mode="wait">
-          {isLoading && <Preloader />}
+          {isLoading && isFirstVisitContext && <Preloader/>}
         </AnimatePresence>
         <HeroSection />
         <DescriptionSection />
