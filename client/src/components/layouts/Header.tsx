@@ -62,16 +62,16 @@ export default function Header() {
             <button className="overflow-hidden h-12 group">
               <div className="h-fit flex flex-col group-hover:translate-y-[-50%] transition-all duration-300"
               >
-                <a className="text-xl font-extralight cursor-pointer px-5 py-2">
+                <a className="text-3xl font-extralight cursor-pointer px-5 py-2">
                   sshivahh
                 </a>
-                <a className="text-xl font-extralight cursor-pointer px-5 py-2 mt-auto">
+                <a className="text-3xl font-extralight cursor-pointer px-5 py-2 mt-auto">
                   by Russel Shivah
                 </a>
               </div>
             </button>
           </Magnetic>
-          <div className="flex gap-12 text-xl font-extralight">
+          <div className="flex gap-12 text-2xl font-extralight">
             <Magnetic>
               <Link href={"/"} className="cursor-pointer px-5 py-2">.home</Link>
             </Magnetic>
