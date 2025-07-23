@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import Header from "@/components/layouts/Header";
 import Transition from "@/components/layouts/Transition";
 import { VisitProvider } from "@/context/VisitContext";
+import { Be_Vietnam_Pro } from "next/font/google";
+
 
 
 const geistSans = Geist({
@@ -15,6 +17,12 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const rubik = Be_Vietnam_Pro({
+  variable: "--font-rubik",
+  weight: "300",
   subsets: ["latin"],
 });
 
@@ -30,7 +38,7 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
   }, [isFirstVisit]);
 
   return (
-    <main className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <main className={`${geistSans.variable} ${geistMono.variable} ${rubik.className} antialiased`}>
     <VisitProvider>
       <Header />
       <AnimatePresence mode="wait">

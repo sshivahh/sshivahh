@@ -142,6 +142,12 @@ export default function HeroSection() {
             fill
             className="object-cover z-100 translate-x-42 translate-y-20"
           />
+          <img
+            src="/texture/texture-3.png"
+            alt="Hero Image"
+            className="object-cover w-full h-full z-[90] opacity-[30%]"
+          />
+
 
           {/* Marquee Title */}
           <motion.div
@@ -187,7 +193,7 @@ export default function HeroSection() {
           }}
           className="z-50 rounded-br-full rounded-tr-full py-2 tracking-tighter text-white font-light bg-neutrl-800/80"
         >
-          <div className="text-white/90 text-7xl w-full font-light px-1 rounded-full flex overflow-hidden">
+          <div className="text-white/90 text-7xl w-full font-light px-1 flex overflow-hidden">
             {textOne.split("").map((char, index) => (
               <div
                 key={index}
@@ -212,10 +218,10 @@ export default function HeroSection() {
                   }}
                   className="relative"
                 >
-                  <span className="block font-extralight">
+                  <span className="block font-extralight text-center">
                     {char === " " ? "\u00A0" : char}
                   </span>
-                  <span className="absolute top-[110%] left-0 block font-extralight">
+                  <span className="absolute top-[110%] left-0 block font-extralight text-center">
                     {char === " " ? "\u00A0" : char}
                   </span>
                 </div>

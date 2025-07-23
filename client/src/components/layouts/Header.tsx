@@ -6,6 +6,14 @@ import Navbar from "./Navbar";
 import Magnetic from "../Magnetic";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import {Rubik} from "next/font/google";
+
+const rubik = Rubik({
+  weight: "300",
+  subsets: ["latin"],
+  variable: "--font-rubik",
+});
+
 
 export default function Header() {
   const [isActive, setActive] = useState(false);
@@ -51,25 +59,25 @@ export default function Header() {
   
   return (
     <>
-      <header className="">
+      <header className={`${rubik.className}`}>
         <motion.div 
           initial={{ y: -100 }}
           animate={{ y: 0 }}
           // transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] , delay: 3.5 }}
           transition={{ duration: 0.1, ease: [0.76, 0, 0.24, 1] , delay: 0.5 }}
-        className="h-24 w-full absolute z-30 flex justify-between items-center px-32 text-white">
+        className="h-30 w-full absolute z-30 flex justify-between items-center px-32 text-white">
           <Magnetic>
-            <button className="overflow-hidden h-12 group">
+            <Link href={"/"} className="overflow-hidden h-12 group">
               <div className="h-fit flex flex-col group-hover:translate-y-[-50%] transition-all duration-300"
               >
-                <a className="text-3xl font-extralight cursor-pointer px-5 py-2">
+                <p className="text-3xl font-extralight cursor-pointer px-5 py-2">
                   sshivahh
-                </a>
-                <a className="text-3xl font-extralight cursor-pointer px-5 py-2 mt-auto">
+                </p>
+                <p className="text-3xl font-extralight cursor-pointer px-5 py-2 mt-auto">
                   by Russel Shivah
-                </a>
+                </p>
               </div>
-            </button>
+            </Link>
           </Magnetic>
           <div className="flex gap-12 text-2xl font-extralight">
             <Magnetic>
