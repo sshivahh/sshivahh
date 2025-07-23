@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-spring/core": "^10.0.1",
+    "@react-spring/three": "^10.0.1",
+    "@react-three/drei": "^10.5.2",
+    "@react-three/fiber": "^9.2.0",
     "@studio-freight/lenis": "^1.0.42",
     "framer-motion": "^12.23.6",
     "gsap": "^3.13.0",
@@ -16,7 +20,8 @@
     "locomotive-scroll": "^4.1.4",
     "next": "15.4.1",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "three": "^0.178.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -25,6 +30,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/react-reconciler": "^0.32.0",
     "eslint": "^9",
     "eslint-config-next": "15.4.1",
     "tailwindcss": "^4",
