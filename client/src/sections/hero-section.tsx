@@ -128,8 +128,22 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative w-screen h-screen overflow-hidden" ref={container}>
-      <div ref={imageWrapper} className="w-full h-full relative overflow-hidden">
+    <section
+      className="relative w-screen h-screen overflow-hidden"
+      ref={container}
+    >
+      {/* <div className="fixed top-24 bg-red-400 md:bg-blue-400 lg:bg-green-500 xl:bg-purple-600 2xl:bg-white border-4 border-black z-[4994392932939]">
+        breakpoint saat ini
+        <p className="md:hidden">sm (640px) - xs (480px)</p>
+        <p className="hidden md:block lg:hidden">md (768px) - sm (640px)</p>
+        <p className="hidden lg:block xl:hidden">lg (1024px) - md (768px)</p>
+        <p className="hidden xl:block 2xl:hidden">xl (1280px) - lg (1024px)</p>
+        <p className="hidden 2xl:block">2xl (1536px) - xl (1280px)</p>
+      </div> */}
+      <div
+        ref={imageWrapper}
+        className="w-full h-full relative overflow-hidden"
+      >
         <motion.div
           initial={{ y: "-20%" }}
           animate={controls}
@@ -140,7 +154,7 @@ export default function HeroSection() {
             src="/images/bg.png"
             alt="Hero Image"
             fill
-            className="object-cover z-100 translate-x-42 translate-y-20"
+            className="object-cover z-100  lg:translate-x-42 translate-y-40 md:translate-y-20"
           />
           <img
             src="/texture/texture-3.png"
@@ -148,12 +162,21 @@ export default function HeroSection() {
             className="object-cover w-full h-full z-[90] opacity-[30%]"
           />
 
-
+          <div className="z-[99] absolute inset-0 flex items-center justify-center md:hidden px-12">
+            <div className="text-[17vw] md:text-[150px] lg:text-[240px] text-white font-light flex scale-[100%] -translate-y-[8vh] md:-translate-y-20 lg:translate-y-40">
+              <p
+                ref={firstText}
+                className={`text-wrap font-[900] ${bungee.className} tracking-tighter leading-[15vw] w-3/4`}
+              >
+                Russel Shivah Budiarto
+              </p>
+            </div>
+          </div>
           {/* Marquee Title */}
           <motion.div
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
-            className="z-[99] absolute inset-0 flex items-center justify-center"
+            className="z-[99] absolute inset-0  items-center justify-center hidden md:flex"
             transition={{
               duration: 1.5,
               ease: [0.76, 0, 0.24, 1],
@@ -162,7 +185,7 @@ export default function HeroSection() {
           >
             <div
               ref={slider}
-              className="text-[240px] text-white font-light flex scale-[100%] translate-y-40"
+              className="text-[100px] md:text-[150px] lg:text-[17vw] text-white font-light flex scale-[100%] -translate-y-28 md:-translate-y-20 lg:translate-y-[10vh]"
             >
               <p
                 ref={firstText}
@@ -182,7 +205,7 @@ export default function HeroSection() {
       </div>
 
       {/* Bottom Title and Location */}
-      <div className="absolute bottom-20 w-full h-56 px-24">
+      <div className="absolute bottom-[0vh] w-full h-56 px-10 md:px-24">
         <motion.div
           initial={{ y: "150%" }}
           animate={{ y: 0 }}
@@ -193,16 +216,23 @@ export default function HeroSection() {
           }}
           className="z-50 rounded-br-full rounded-tr-full py-2 tracking-tighter text-white font-light bg-neutrl-800/80"
         >
-          <div className="text-white/90 text-7xl w-full font-light px-1 flex overflow-hidden">
+          <p className="md:hidden text-5xl">
+            Web Developer
+          </p>
+          <div className="text-white/90 text-7xl w-full font-light px-1 md:flex overflow-hidden hidden">
             {textOne.split("").map((char, index) => (
               <div
                 key={index}
-                className="relative inline-block overflow-hidden h-[1em] cursor-default"
+                className="relative inline-block overflow-hidden  lg:h-[1em] cursor-default"
                 onMouseEnter={() => {
                   const el = letterRefs.current[index];
                   if (!el) return;
                   gsap.killTweensOf(el);
-                  gsap.to(el, { y: "-110%", duration: 0.3, ease: "power2.out" });
+                  gsap.to(el, {
+                    y: "-110%",
+                    duration: 0.3,
+                    ease: "power2.out",
+                  });
                 }}
                 onMouseLeave={() => {
                   const el = letterRefs.current[index];
@@ -216,7 +246,7 @@ export default function HeroSection() {
                   ref={(el) => {
                     letterRefs.current[index] = el;
                   }}
-                  className="relative"
+                  className="relative text-4xl md:text-5xl lg:text-7xl"
                 >
                   <span className="block font-extralight text-center">
                     {char === " " ? "\u00A0" : char}
@@ -230,14 +260,15 @@ export default function HeroSection() {
           </div>
         </motion.div>
 
-        <div className="flex flex-col px-2 mt-2">
-          <p className="text-white font-extralight text-3xl">Based in Jakarta</p>
-          
+        <div className="flex flex-col px-2 md:mt-2">
+          <p className="text-white font-extralight text-2xl  lg:text-3xl">
+            Based in Jakarta
+          </p>
         </div>
       </div>
 
       {/* Wireframe Cube */}
-      <WireCubeCanvas scrollVelocity={scrollVelocity} />
+      <WireCubeCanvas scrollVelocity={scrollVelocity}/>
     </section>
   );
 }

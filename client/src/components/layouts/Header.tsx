@@ -25,36 +25,44 @@ export default function Header( { isFirstVisit }: { isFirstVisit: boolean }) {
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    gsap.to(burger.current, {
-      scrollTrigger: {
-        trigger: document.documentElement,
-        start: 0,
-        end: window.innerHeight,
-        onLeave: () => {
-          gsap.to(burger.current, {
-            scale: 1,
-            duration: 0.25,
-            ease: "power2.inOut",
-          });
+  
+    const mm = gsap.matchMedia();
+  
+    mm.add("(min-width: 768px)", () => {
+      // Only runs on md and up
+      gsap.set(burger.current, { scale: 0 }); // start hidden
+  
+      gsap.to(burger.current, {
+        scrollTrigger: {
+          trigger: document.documentElement,
+          start: 0,
+          end: window.innerHeight,
+          onLeave: () => {
+            gsap.to(burger.current, {
+              scale: 1,
+              duration: 0.25,
+              ease: "power2.inOut",
+            });
+          },
+          onEnterBack: () => {
+            gsap.to(burger.current, {
+              scale: 0,
+              duration: 0.25,
+              ease: "power2.inOut",
+            });
+          },
         },
-        onEnterBack: () => {
-          gsap.to(burger.current, {
-            scale: 0,
-            duration: 0.25,
-            ease: "power2.inOut",
-          });
-        },
-      },
+      });
     });
-  });
-
-  useEffect(() => {
-    if (isActive) {
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
-  }, [isActive]);
+  
+    mm.add("(max-width: 767px)", () => {
+      // On smaller screens: just show it immediately
+      gsap.set(burger.current, { scale: 1 });
+    });
+  
+    return () => mm.revert(); // Clean up on unmount
+  }, []);
+  
 
   
   return (
@@ -65,23 +73,23 @@ export default function Header( { isFirstVisit }: { isFirstVisit: boolean }) {
           animate={{ y: 0 }}
           transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] , delay: isFirstVisit? 3.5 : 0.5 }}
           // transition={{ duration: 0.1, ease: [0.76, 0, 0.24, 1] , delay: 3.5 }}
-        className="h-30 w-full absolute z-30 flex justify-between items-center px-32 text-white">
+        className="h-30 w-full absolute z-30 justify-between items-center md:px-10 lg:px-16 2xl:px-32 text-white hidden md:flex">
           <Magnetic>
             <Link href={"/"} className="overflow-hidden h-12 group">
               <div className="h-fit flex flex-col group-hover:translate-y-[-50%] transition-all duration-300 text-center"
               >
-                <p className="text-3xl font-extralight cursor-pointer px-5 py-2">
+                <p className="md:text-2xl xl:text-3xl font-extralight cursor-pointer px-5 py-2">
                   sshivahh
                 </p>
-                <p className="text-3xl font-extralight cursor-pointer px-5 py-2 mt-auto">
+                <p className="md:text-2xl xl:text-3xl font-extralight cursor-pointer px-5 py-2 mt-auto">
                   by Russel Shivah
                 </p>
               </div>
             </Link>
           </Magnetic>
-          <div className="flex gap-12 text-2xl font-extralight">
+          <div className="flex lg:gap-[2vw] xl:gap-10 2xl:gap-12 text-2xl font-extralight h-12">
             <Magnetic>
-              <Link href={"/"} className="cursor-pointer px-5 py-2">.home</Link>
+              <Link href={"/"} className="cursor-pointer px-5 py-2 hidden lg:block">.home</Link>
             </Magnetic>
             <Magnetic>
               <Link href={"/about"} className="cursor-pointer px-5 py-2">.about</Link>
@@ -99,17 +107,17 @@ export default function Header( { isFirstVisit }: { isFirstVisit: boolean }) {
         </motion.div>
         <div
           ref={burger}
-          className="fixed top-10 right-10 w-28 h-28 bg-neutral-700 rounded-full z-[70] flex justify-center items-center hover:cursor-pointer active:bg-neutral-800 hover:bg-neutral-600 active:!scale-90 transition-all duration-300 scale-0"
+          className="fixed top-5 right-5 md:top-[3rem] md:right-[3rem] w-16 h-16 md:w-28 md:h-28 bg-neutral-700 rounded-full z-[70] flex justify-center items-center hover:cursor-pointer active:bg-neutral-800 hover:bg-neutral-600 active:!scale-90 transition-all duration-300 scale-0"
           onClick={() => handleBurgerClick()}
         >
           <div
-            className={`w-14 border-t-[4px] border-white transform-all transition-all duration-300 absolute  ${
-              isActive ? "rotate-45 translate-y-0" : "rotate-0 translate-y-2"
+            className={`w-8 md:w-14 border-t-[4px] border-white transform-all transition-all duration-300 absolute  ${
+              isActive ? "rotate-45 translate-y-0" : "rotate-0 translate-y-1 md:translate-y-2"
             }`}
           ></div>
           <div
-            className={`w-14 border-t-[4px] border-white transform-all transition-all duration-300 absolute ${
-              isActive ? "-rotate-45 translate-y-0" : "rotate-0 -translate-y-2 "
+            className={`w-8 md:w-14 border-t-[4px] border-white transform-all transition-all duration-300 absolute ${
+              isActive ? "-rotate-45 translate-y-0" : "rotate-0 -translate-y-1 md:-translate-y-2 "
             }`}
           ></div>
         </div>

@@ -10,16 +10,7 @@ type Props = {
 
 export default function WireCubeCanvas({ scrollVelocity }: Props) {
   return (
-    <div
-      style={{
-        position: "absolute",
-        bottom: "2rem",
-        right: "2rem",
-        width: "200px",
-        height: "200px",
-        zIndex: 10,
-      }}
-    >
+    <div className="absolute hidden md:block bottom-[35%] right-[60vw] md:bottom-[3rem] md:right-[3rem] w-48 h-48 md:w-56 md:h-56 lg:w-72 lg:h-72">
       <Canvas>
         <ambientLight intensity={0.5} />
         <pointLight position={[5, 5, 5]} />
@@ -34,7 +25,7 @@ function WireCube({ scrollVelocity }: { scrollVelocity: number }) {
 
   useFrame((_, delta) => {
     // Spin speed influenced by scroll velocity
-    const spinSpeed = delta * (0.5 + Math.abs(scrollVelocity) * 0.01);
+    const spinSpeed = delta * (0.5 + Math.abs(scrollVelocity) * 0.005);
     ref.current.rotation.x += spinSpeed * 0.4;
     ref.current.rotation.y += spinSpeed;
   });
