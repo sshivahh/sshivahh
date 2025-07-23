@@ -15,7 +15,7 @@ const rubik = Rubik({
 });
 
 
-export default function Header() {
+export default function Header( { isFirstVisit }: { isFirstVisit: boolean }) {
   const [isActive, setActive] = useState(false);
   const burger = useRef<HTMLDivElement>(null);
 
@@ -63,12 +63,12 @@ export default function Header() {
         <motion.div 
           initial={{ y: -100 }}
           animate={{ y: 0 }}
-          // transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] , delay: 3.5 }}
-          transition={{ duration: 0.1, ease: [0.76, 0, 0.24, 1] , delay: 0.5 }}
+          transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] , delay: isFirstVisit? 3.5 : 0.5 }}
+          // transition={{ duration: 0.1, ease: [0.76, 0, 0.24, 1] , delay: 3.5 }}
         className="h-30 w-full absolute z-30 flex justify-between items-center px-32 text-white">
           <Magnetic>
             <Link href={"/"} className="overflow-hidden h-12 group">
-              <div className="h-fit flex flex-col group-hover:translate-y-[-50%] transition-all duration-300"
+              <div className="h-fit flex flex-col group-hover:translate-y-[-50%] transition-all duration-300 text-center"
               >
                 <p className="text-3xl font-extralight cursor-pointer px-5 py-2">
                   sshivahh

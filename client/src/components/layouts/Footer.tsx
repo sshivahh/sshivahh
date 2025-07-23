@@ -115,7 +115,7 @@ export default function Footer() {
         <span className="w-full h-1 border-t-[1px] border-white my-24 relative">
           <div ref={ball}>
             <Magnetic>
-              <div className="w-60 h-60 absolute -bottom-30 right-30 bg-indigo-500 rounded-full flex items-center justify-center">
+              <div className="w-60 h-60 absolute -bottom-30 right-30 bg-[#518c68] rounded-full flex items-center justify-center">
                 <p className="text-white text-2xl font-extralight">
                   Get in Touch
                 </p>

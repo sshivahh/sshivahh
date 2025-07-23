@@ -13,7 +13,7 @@ import React, {
   }
   
   const Button = forwardRef<HTMLDivElement, ButtonProps>(
-    ({ children, backgroundColor = "bg-blue-500", ...attributes }, ref) => {
+    ({ children, backgroundColor = "bg-[#71897a]", ...attributes }, ref) => {
       const circle = useRef<HTMLDivElement>(null);
       const timeline = useRef<gsap.core.Timeline | null>(null);
       let timeoutID: string | number | NodeJS.Timeout | null | undefined = null;
@@ -74,7 +74,7 @@ import React, {
             </p>
           <div
             ref={circle}
-            className="w-full h-[250%] absolute rounded-full top-full bg-indigo-600"
+            className="w-full h-[250%] absolute rounded-full top-full bg-[#ff5160]"
           ></div>
         </div>
       );

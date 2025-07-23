@@ -2,6 +2,7 @@
 import { Easing, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { div } from "framer-motion/client";
 
 const anim = <T extends object>(variants: T) => ({
   initial: "initial",
@@ -62,7 +63,7 @@ export default function Transition({
   };
 
   const routes: Record<string, string> = {
-    "/": "Home",
+    "/": "home",
     "/about": "about",
     "/idk": "idk",
     "/projects": "projects",
@@ -71,6 +72,11 @@ export default function Transition({
 
   return (
     <>
+      {
+        dimensions.width < 1 && !isFirstVisit && (
+          <div className={`fixed top-0 left-0 w-screen h-screen z-[9999] pointer-events-none ${isFirstVisit? "hidden" : "block"} bg-[#171717]`}></div>
+        )
+      }
       {/* Animated overlay */}
       <div className={`fixed top-0 left-0 w-screen h-screen z-[9999] pointer-events-none ${isFirstVisit? "hidden" : "block"}`}>
         <motion.p
