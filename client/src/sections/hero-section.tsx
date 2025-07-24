@@ -216,7 +216,7 @@ export default function HeroSection() {
           }}
           className="z-50 rounded-br-full rounded-tr-full py-2 tracking-tighter text-white font-light bg-neutrl-800/80"
         >
-          <p className="md:hidden text-5xl">
+          <p className="md:hidden text-5xl font-extralight">
             Web Developer
           </p>
           <div className="text-white/90 text-7xl w-full font-light px-1 md:flex overflow-hidden hidden">
