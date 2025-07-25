@@ -2,7 +2,7 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { motion, useInView } from "framer-motion";
-import { slideUp, container as containerVariant } from "../animation/animDesc";
+import { slideUp, container as containerVariant } from "../../animation/animDesc";
 import Button from "@/components/Button";
 import Magnetic from "@/components/Magnetic";
 

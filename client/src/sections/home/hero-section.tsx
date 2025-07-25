@@ -132,14 +132,14 @@ export default function HeroSection() {
       className="relative w-screen h-screen overflow-hidden"
       ref={container}
     >
-      {/* <div className="fixed top-24 bg-red-400 md:bg-blue-400 lg:bg-green-500 xl:bg-purple-600 2xl:bg-white border-4 border-black z-[4994392932939]">
+      <div className="fixed top-24 bg-red-400 md:bg-blue-400 lg:bg-green-500 xl:bg-purple-600 2xl:bg-white border-4 border-black z-[4994392932939]">
         breakpoint saat ini
         <p className="md:hidden">sm (640px) - xs (480px)</p>
         <p className="hidden md:block lg:hidden">md (768px) - sm (640px)</p>
         <p className="hidden lg:block xl:hidden">lg (1024px) - md (768px)</p>
         <p className="hidden xl:block 2xl:hidden">xl (1280px) - lg (1024px)</p>
         <p className="hidden 2xl:block">2xl (1536px) - xl (1280px)</p>
-      </div> */}
+      </div>
       <div
         ref={imageWrapper}
         className="w-full h-full relative overflow-hidden"

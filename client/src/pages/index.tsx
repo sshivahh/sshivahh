@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 
 import Preloader from "@/components/Preloader";
-import HeroSection from "@/sections/hero-section";
-import DescriptionSection from "@/sections/description-section";
-import ProjectSection from "@/sections/projects-section";
-import IdkSection from "@/sections/idk-section";
+import HeroSection from "@/sections/home/hero-section";
+import DescriptionSection from "@/sections/home/description-section";
+import ProjectSection from "@/sections/home/projects-section";
+import IdkSection from "@/sections/home/idk-section";
 import { AnimatePresence } from "framer-motion";
 import Head from "next/head";
 import Footer from "@/components/layouts/Footer";
