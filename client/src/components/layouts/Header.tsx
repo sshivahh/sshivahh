@@ -15,13 +15,16 @@ const rubik = Rubik({
 });
 
 
-export default function Header( { isFirstVisit }: { isFirstVisit: boolean }) {
+export default function Header( { isFirstVisit, path }: { isFirstVisit: boolean, path: string }) {
   const [isActive, setActive] = useState(false);
   const burger = useRef<HTMLDivElement>(null);
 
   const handleBurgerClick = () => {
     setActive(!isActive);
   };
+  
+  let headerDelay = 0;
+
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -62,7 +65,16 @@ export default function Header( { isFirstVisit }: { isFirstVisit: boolean }) {
   
     return () => mm.revert(); // Clean up on unmount
   }, []);
-  
+  useEffect(() => {
+    console.log("Header mounted with path:", path);
+
+
+    if( path === "/") {
+      headerDelay = isFirstVisit ? 93.5 : 60.5;
+    }else{
+      headerDelay = 9.5;
+    }
+  })
 
   
   return (
@@ -71,7 +83,7 @@ export default function Header( { isFirstVisit }: { isFirstVisit: boolean }) {
         <motion.div 
           initial={{ y: -100 }}
           animate={{ y: 0 }}
-          transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] , delay: isFirstVisit? 3.5 : 0.5 }}
+          transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] , delay: (isFirstVisit && path === "/") ? 3.5 : 0 }}
           // transition={{ duration: 0.1, ease: [0.76, 0, 0.24, 1] , delay: 3.5 }}
         className="h-30 w-full absolute z-30 justify-between items-center md:px-10 lg:px-16 2xl:px-32 text-white hidden md:flex">
           <Magnetic>

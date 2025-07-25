@@ -1,7 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import Lenis from "@studio-freight/lenis";
-
 import Preloader from "@/components/Preloader";
 import HeroSection from "@/sections/home/hero-section";
 import DescriptionSection from "@/sections/home/description-section";
@@ -17,28 +15,10 @@ export default function Page() {
   const { isFirstVisit: isFirstVisitContext } = useVisit();
 
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: "vertical",
-      gestureOrientation: "vertical",
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-      infinite: false,
-    });
-
-    const raf = (time: number) => {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    };
-
-    requestAnimationFrame(raf);
-
     // ✅ Call it properly
-    if(isFirstVisitContext){
-      setIsLoading(true)
-    } else{
+    if (isFirstVisitContext) {
+      setIsLoading(true);
+    } else {
       setIsLoading(false);
     }
 
@@ -46,10 +26,6 @@ export default function Page() {
       setIsLoading(false);
       window.scrollTo(0, 0);
     }, 3500);
-
-    return () => {
-      lenis.destroy();
-    };
   }, []);
 
   useEffect(() => {
@@ -76,7 +52,7 @@ export default function Page() {
 
       <main className="overflow-x-hidden overflow-y-visible">
         <AnimatePresence mode="wait">
-          {isLoading && isFirstVisitContext && <Preloader/>}
+          {isLoading && isFirstVisitContext && <Preloader />}
         </AnimatePresence>
         <HeroSection />
         <DescriptionSection />

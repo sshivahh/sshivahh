@@ -132,14 +132,14 @@ export default function HeroSection() {
       className="relative w-screen h-screen overflow-hidden"
       ref={container}
     >
-      <div className="fixed top-24 bg-red-400 md:bg-blue-400 lg:bg-green-500 xl:bg-purple-600 2xl:bg-white border-4 border-black z-[4994392932939]">
+      {/* <div className="fixed top-24 bg-red-400 md:bg-blue-400 lg:bg-green-500 xl:bg-purple-600 2xl:bg-white border-4 border-black z-[4994392932939]">
         breakpoint saat ini
         <p className="md:hidden">sm (640px) - xs (480px)</p>
         <p className="hidden md:block lg:hidden">md (768px) - sm (640px)</p>
         <p className="hidden lg:block xl:hidden">lg (1024px) - md (768px)</p>
         <p className="hidden xl:block 2xl:hidden">xl (1280px) - lg (1024px)</p>
         <p className="hidden 2xl:block">2xl (1536px) - xl (1280px)</p>
-      </div>
+      </div> */}
       <div
         ref={imageWrapper}
         className="w-full h-full relative overflow-hidden"
@@ -216,9 +216,7 @@ export default function HeroSection() {
           }}
           className="z-50 rounded-br-full rounded-tr-full py-2 tracking-tighter text-white font-light bg-neutrl-800/80"
         >
-          <p className="md:hidden text-5xl font-extralight">
-            Web Developer
-          </p>
+          <p className="md:hidden text-5xl font-extralight">Web Developer</p>
           <div className="text-white/90 text-7xl w-full font-light px-1 md:flex overflow-hidden hidden">
             {textOne.split("").map((char, index) => (
               <div
@@ -268,7 +266,7 @@ export default function HeroSection() {
       </div>
 
       {/* Wireframe Cube */}
-      <WireCubeCanvas scrollVelocity={scrollVelocity}/>
+      <WireCubeCanvas scrollVelocity={scrollVelocity} />
     </section>
   );
 }
