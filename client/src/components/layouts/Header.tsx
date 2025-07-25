@@ -23,6 +23,10 @@ export default function Header( { isFirstVisit, path }: { isFirstVisit: boolean,
     setActive(!isActive);
   };
   
+  const handleMenuClick = () => {
+    setActive(false);
+  }
+
   let headerDelay = 0;
 
 
@@ -101,19 +105,19 @@ export default function Header( { isFirstVisit, path }: { isFirstVisit: boolean,
           </Magnetic>
           <div className="flex lg:gap-[2vw] xl:gap-10 2xl:gap-12 text-2xl font-extralight h-12">
             <Magnetic>
-              <Link href={"/"} className="cursor-pointer px-5 py-2 hidden lg:block">.home</Link>
+              <Link href={"/"} scroll={false} className="cursor-pointer px-5 py-2 hidden lg:block">.home</Link>
             </Magnetic>
             <Magnetic>
-              <Link href={"/about"} className="cursor-pointer px-5 py-2">.about</Link>
+              <Link href={"/about"} scroll={false} className="cursor-pointer px-5 py-2">.about</Link>
             </Magnetic>
             <Magnetic>
-              <Link href={"/projects"} className="cursor-pointer px-5 py-2">.projects</Link>
+              <Link href={"/projects"} scroll={false} className="cursor-pointer px-5 py-2">.projects</Link>
             </Magnetic>
             <Magnetic>
-              <Link href={"/idk"} className="cursor-pointer px-5 py-2">.idk</Link>
+              <Link href={"/idk"} scroll={false} className="cursor-pointer px-5 py-2">.idk</Link>
             </Magnetic>
             <Magnetic>
-              <Link href={"/contact"} className="cursor-pointer px-5 py-2">.contact</Link>
+              <Link href={"/contact"} scroll={false} className="cursor-pointer px-5 py-2">.contact</Link>
             </Magnetic>
           </div>
         </motion.div>
@@ -143,7 +147,7 @@ export default function Header( { isFirstVisit, path }: { isFirstVisit: boolean,
                 className="inset-0 z-[60] fixed bg-black/40"
                 onClick={() => setActive(false)}
               ></motion.div>
-              <Navbar />
+              <Navbar handleMenuClick={handleMenuClick} />
             </>
           )}
         </AnimatePresence>

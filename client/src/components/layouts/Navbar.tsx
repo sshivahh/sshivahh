@@ -1,13 +1,18 @@
 import { menuSlide, slide } from "@/animation/animNav";
 import { motion } from "framer-motion";
 import Curve from "../Curve";
+import Link from "next/link";
 
-export default function Navbar() {
+type ChildProps = {
+  handleMenuClick: () => void;
+};
+
+export default function Navbar({ handleMenuClick }: ChildProps) {
   const menu = [
-    { name: "Home", link: "#home" },
-    { name: "About", link: "#about" },
-    { name: "Projects", link: "#projects" },
-    { name: "Contact", link: "#contact" },
+    { name: "Home", link: "/" },
+    { name: "About", link: "/about" },
+    { name: "Projects", link: "/projects" },
+    { name: "Contact", link: "/contact" },
   ];
 
   return (<>
@@ -24,18 +29,19 @@ export default function Navbar() {
         </div>
 
         {menu.map((item, index) => (
-          <motion.a
+          <motion.div
             custom={index}
             variants={slide}
             initial="initial"
             animate="enter"
             exit="exit"
             key={index}
-            href={item.link}
             className="text-5xl hover:text-neutral-400 transition-colors duration-300 mb-4 w-full font-light"
           >
+            <Link scroll={false} href={item.link} onClick={handleMenuClick} > 
             {item.name}
-          </motion.a>
+            </Link>
+          </motion.div>
         ))}
         <div className="w-full flex justify-between mt-56">
           <a
